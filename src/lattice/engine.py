@@ -76,18 +76,25 @@ class Engine:
         while self.stack:
             self.pop()
     
-    def run(self) -> None:
-        """Runs the game."""
-        
+    def initialize(self) -> None:
+        """Initializes pygame."""
         pygame.init()
         
-        display = pygame.display.set_mode((self.config.width, self.config.height))
+        pygame.display.set_mode((self.config.width, self.config.height))
         
         if self.config.title is not None:
             pygame.display.set_caption(self.config.title)
         
         if self.config.icon_path is not None:
             pygame.display.set_icon(pygame.image.load(self.config.icon_path))
+    
+    def run(self) -> None:
+        """Runs the game."""
+        
+        if not pygame.display.get_init():
+            self.initialize()
+        
+        display = pygame.display.get_surface()
         
         clock = pygame.time.Clock()
         
