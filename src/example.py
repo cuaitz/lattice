@@ -2,7 +2,7 @@ import pygame
 from lattice import *
 
 class TestState(GameState):
-    def __init__(self, engine: Engine, game: GameLogic):
+    def __init__(self, engine: Engine, game: any):
         super().__init__(engine, game)
     
     def process_event(self, event: pygame.event.Event) -> None:

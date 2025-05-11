@@ -3,15 +3,13 @@ from typing import TYPE_CHECKING
 
 import pygame
 
-from .game_logic import GameLogic
-
 if TYPE_CHECKING:
     from .engine import Engine
 
 class GameState(ABC):
-    def __init__(self, engine: 'Engine', game: GameLogic):
+    def __init__(self, engine: 'Engine', game: any):
         self.engine: 'Engine' = engine
-        self.game: GameLogic = game
+        self.game: any = game
         pass
     
     def on_start(self) -> None:
